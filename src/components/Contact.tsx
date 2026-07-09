@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -26,25 +26,25 @@ const Contact = () => {
 
     // Prepare the template params
     const templateParams = {
-      from_name: formData.name,
-      reply_to: formData.email,
+      name: formData.name,
+      email: formData.email,
       subject: formData.subject,
       message: formData.message,
     };
 
     try {
       await emailjs.send(
-        'YOUR_SERVICE_ID',      // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID',     // Replace with your EmailJS template ID
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         templateParams,
-        'YOUR_USER_ID'          // Replace with your EmailJS public key (user ID)
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
       setStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setStatus('idle'), 3000);
+      setTimeout(() => setStatus('idle'), 6000);
     } catch (error) {
       setStatus('error');
-      setTimeout(() => setStatus('idle'), 3000);
+      setTimeout(() => setStatus('idle'), 6000);
     }
   };
 
@@ -259,11 +259,48 @@ const Contact = () => {
 
               {status === 'success' && (
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-green-600 dark:text-green-400 text-center font-medium"
+                  initial={{ opacity: 0, y: 16, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.4, ease: 'easeOut' }}
+                  className="rounded-xl border border-green-200 dark:border-green-700 bg-green-50 dark:bg-green-900/20 p-5 flex items-start gap-4"
                 >
-                  Thank you for your message! I'll get back to you soon.
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 dark:bg-green-800 flex items-center justify-center">
+                    <CheckCircle className="text-green-600 dark:text-green-400" size={22} />
+                  </div>
+                  <div>
+                    <h5 className="text-base font-semibold text-green-800 dark:text-green-300 mb-1">
+                      Message sent successfully!
+                    </h5>
+                    <p className="text-sm text-green-700 dark:text-green-400 leading-relaxed">
+                      Thank you for reaching out. I've received your message and will get back to you within 24 hours.
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+
+              {status === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 16, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.4, ease: 'easeOut' }}
+                  className="rounded-xl border border-red-200 dark:border-red-700 bg-red-50 dark:bg-red-900/20 p-5 flex items-start gap-4"
+                >
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-red-100 dark:bg-red-800 flex items-center justify-center">
+                    <AlertCircle className="text-red-600 dark:text-red-400" size={22} />
+                  </div>
+                  <div>
+                    <h5 className="text-base font-semibold text-red-800 dark:text-red-300 mb-1">
+                      Something went wrong
+                    </h5>
+                    <p className="text-sm text-red-700 dark:text-red-400 leading-relaxed">
+                      Your message couldn't be sent. Please try again or contact me directly at{' '}
+                      <a href="mailto:emmanuellaabate@gmail.com" className="underline font-medium hover:text-red-900 dark:hover:text-red-200 transition-colors">
+                        emmanuellaabate@gmail.com
+                      </a>
+                    </p>
+                  </div>
                 </motion.div>
               )}
             </form>
