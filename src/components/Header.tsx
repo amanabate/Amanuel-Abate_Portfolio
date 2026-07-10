@@ -25,11 +25,10 @@ const Header = () => {
   }, [isDark]);
 
   const navItems = [
-    { name: 'Home',      href: '#home' },
-    { name: 'About',     href: '#about' },
-    { name: 'Tech Stack', href: '#techstack' },
-    { name: 'Projects',  href: '#projects' },
-    { name: 'Contact',   href: '#contact' },
+    { name: 'Home',     href: '#home' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'About',    href: '#about' },
+    { name: 'Contact',  href: '#contact' },
   ];
 
   return (

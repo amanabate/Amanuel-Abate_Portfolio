@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 import About from '../components/About';
 import TechStack from '../components/TechStack';
 import Projects from '../components/Projects';
+import Services from '../components/Services';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 
@@ -13,9 +14,10 @@ const Index = () => {
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
       <Hero />
-      <About />
       <TechStack />
       <Projects />
+      <Services />
+      <About />
       <Contact />
       <Footer />
     </div>

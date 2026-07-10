@@ -1,62 +1,46 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Palette, Zap, Users, Award, BookOpen } from 'lucide-react';
 
 const About = () => {
-  const programmingLanguages = [
-    { name: 'Python', level: 85, color: 'from-amber-400 to-orange-600' },
-    { name: 'C++', level: 80, color: 'from-gray-500 to-gray-700' },
-    { name: 'JavaScript', level: 95, color: 'from-amber-400 to-orange-600' },
-    { name: 'Java', level: 82, color: 'from-red-400 to-red-600' },
-  ];
-  const frameworksLibraries = [
-    { name: 'React', level: 90, color: 'from-amber-400 to-orange-600' },
-    { name: 'Node.js', level: 80, color: 'from-green-400 to-emerald-500' },
-    { name: 'Tailwind CSS', level: 92, color: 'from-cyan-400 to-teal-500' },
-    { name: 'Express.js', level: 78, color: 'from-green-300 to-green-500' },
-  ];
-  const databases = [
-    { name: 'MongoDB', level: 80, color: 'from-green-500 to-green-700' },
-    { name: 'MySQL', level: 75, color: 'from-amber-300 to-amber-500' },
-  ];
-
   const highlights = [
     {
       icon: Code,
       title: 'Clean Code',
-      description: 'Writing maintainable, scalable, and efficient code with best practices',
+      description: 'Writing maintainable, scalable code across the full stack — from API routes to UI components',
     },
     {
       icon: Palette,
-      title: 'Design System',
-      description: 'Creating consistent and beautiful user interfaces with attention to detail',
+      title: 'UI & Design',
+      description: 'Building consistent, beautiful interfaces with attention to detail and user experience',
     },
     {
       icon: Zap,
       title: 'Performance',
-      description: 'Optimizing applications for speed, accessibility, and user experience',
+      description: 'Optimizing both frontend rendering and backend response times for fast, efficient applications',
     },
     {
       icon: Users,
       title: 'Collaboration',
-      description: 'Working effectively in teams using Agile methodologies and version control',
+      description: 'Working effectively in teams using Agile methodologies, Git workflows, and clear communication',
     },
     {
       icon: Award,
       title: 'Quality',
-      description: 'Delivering pixel-perfect, cross-browser compatible solutions',
+      description: 'Delivering reliable, tested, and cross-browser compatible solutions end to end',
     },
     {
       icon: BookOpen,
-      title: 'Learning',
-      description: 'Constantly exploring new technologies and industry best practices',
+      title: 'Always Learning',
+      description: 'Constantly exploring new technologies, frameworks, and AI tools to stay ahead of the curve',
     },
   ];
 
   return (
     <section id="about" className="py-10 lg:py-16 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-2 sm:px-3 lg:px-8">
+
+        {/* Section heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,109 +51,37 @@ const About = () => {
             About Me
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Passionate full-stack developer with 3+ years of experience creating exceptional digital experiences
+            Passionate full-stack developer with 3+ years of experience building scalable web applications from database to deployment
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              My Journey
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-              I started my journey in web development with a curiosity for how beautiful websites come to life. 
-              What began as a hobby quickly evolved into a passion for creating user-centered digital experiences 
-              that not only look great but perform exceptionally.
-            </p>
-            <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-              Today, I specialize in modern frontend technologies like React, TypeScript, and Tailwind CSS, 
-              always staying current with the latest industry trends and best practices. I believe in writing 
-              clean, maintainable code and creating interfaces that users love to interact with.
-            </p>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-              When I'm not coding, you'll find me exploring new design trends, contributing to open-source 
-              projects, or sharing knowledge with the developer community.
-            </p>
-          </motion.div>
+        {/* My Journey */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto mb-20"
+        >
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+            My Journey
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+            I started my journey in software development with a deep curiosity for how complex systems are built from scratch.
+            What began as experimenting with small scripts quickly grew into a passion for architecting full-stack applications —
+            from designing REST APIs and managing databases to crafting polished, responsive user interfaces.
+          </p>
+          <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+            Today I work across the entire stack — building backends with Node.js, Express, and NestJS, designing databases
+            with MongoDB and PostgreSQL, and creating modern frontends with React, TypeScript, and Tailwind CSS.
+            I care deeply about clean architecture, performance, and writing code that is easy to maintain and scale.
+          </p>
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+            When I'm not coding, you'll find me exploring new technologies, diving into AI tools and developer workflows,
+            contributing to open-source, or sharing what I've learned with the developer community.
+          </p>
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Technical Skills
-            </h3>
-            <div className="space-y-4">
-              <div>
-                <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">Programming Languages</h4>
-                {programmingLanguages.map((skill, index) => (
-                  <div key={skill.name} className="mb-2">
-                    <div className="flex justify-between mb-1">
-                      <span className="text-gray-700 dark:text-gray-300 font-medium">{skill.name}</span>
-                      <span className="text-gray-500 dark:text-gray-400">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: index * 0.1 }}
-                        className={`h-3 rounded-full bg-gradient-to-r ${skill.color}`}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">Frameworks/Libraries</h4>
-                {frameworksLibraries.map((skill, index) => (
-                  <div key={skill.name} className="mb-2">
-                    <div className="flex justify-between mb-1">
-                      <span className="text-gray-700 dark:text-gray-300 font-medium">{skill.name}</span>
-                      <span className="text-gray-500 dark:text-gray-400">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: index * 0.1 }}
-                        className={`h-3 rounded-full bg-gradient-to-r ${skill.color}`}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">Databases</h4>
-                {databases.map((skill, index) => (
-                  <div key={skill.name} className="mb-2">
-                    <div className="flex justify-between mb-1">
-                      <span className="text-gray-700 dark:text-gray-300 font-medium">{skill.name}</span>
-                      <span className="text-gray-500 dark:text-gray-400">{skill.level}%</span>
-                    </div>
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: index * 0.1 }}
-                        className={`h-3 rounded-full bg-gradient-to-r ${skill.color}`}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
+        {/* Highlight cards */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -201,6 +113,7 @@ const About = () => {
             );
           })}
         </motion.div>
+
       </div>
     </section>
   );

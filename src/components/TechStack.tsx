@@ -15,13 +15,14 @@ import {
   SiExpo, SiFlutter,
   SiOpenai, SiClaude, SiAnthropic, SiGooglegemini,
   SiGithubcopilot, SiHuggingface, SiPerplexity, SiOllama,
+  SiPython, SiCplusplus,
 } from 'react-icons/si';
 
 /* ─────────────────────────── DATA ─────────────────────────── */
 type Category =
   | 'All' | 'Frontend' | 'Backend' | 'Database' | 'Mobile'
-  | 'DevOps' | 'Cloud' | 'Tools' | 'Design' | 'AI' | 'Testing';
-
+  | 'DevOps' | 'Cloud' | 'Tools' | 'Design' | 'AI' | 'Testing'
+  | 'Languages';
 interface Tech {
   name: string;
   icon: React.ElementType;
@@ -64,7 +65,12 @@ const techs: Tech[] = [
   // Mobile
   { name: 'React Native', icon: SiReact,           description: 'Cross-platform mobile apps',          category: 'Mobile',    color: '#61DAFB' },
   { name: 'Expo',         icon: SiExpo,            description: 'React Native development toolkit',    category: 'Mobile',    color: '#ffffff' },
-  { name: 'Flutter',      icon: SiFlutter,         description: 'Google\'s cross-platform UI toolkit', category: 'Mobile',    color: '#54C5F8' },
+  { name: 'Flutter',      icon: SiFlutter,         description: "Google's cross-platform UI toolkit",  category: 'Mobile',    color: '#54C5F8' },
+  // Languages
+  { name: 'Python',       icon: SiPython,          description: 'Versatile high-level language',       category: 'Languages', color: '#3776AB' },
+  { name: 'C++',          icon: SiCplusplus,       description: 'High-performance system language',    category: 'Languages', color: '#00599C' },
+  { name: 'JavaScript',   icon: SiJavascript,      description: 'Core web scripting language',         category: 'Languages', color: '#F7DF1E' },
+  { name: 'Java',         icon: Bot,               description: 'Object-oriented platform language',   category: 'Languages', color: '#F89820' },
   // AI
   { name: 'ChatGPT',        icon: SiOpenai,        description: 'OpenAI conversational AI assistant',  category: 'AI',        color: '#10A37F' },
   { name: 'Claude',         icon: SiClaude,        description: 'Anthropic\'s AI assistant',           category: 'AI',        color: '#D97757' },
@@ -88,8 +94,9 @@ const sidebarItems: { label: Category; icon: React.ElementType }[] = [
   { label: 'Frontend', icon: Circle },
   { label: 'Backend',  icon: Server },
   { label: 'Database', icon: Database },
-  { label: 'Mobile',   icon: Smartphone },
-  { label: 'DevOps',   icon: Container },
+  { label: 'Mobile',             icon: Smartphone },
+  { label: 'Languages', icon: Code2 },
+  { label: 'DevOps',             icon: Container },
   { label: 'Cloud',    icon: Cloud },
   { label: 'Tools',    icon: Wrench },
   { label: 'AI',       icon: Brain },
@@ -104,7 +111,7 @@ function countByCategory(cat: Category) {
 
 /* ─────────────────────────── COMPONENT ─────────────────────────── */
 const TechStack: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<Category>('All');
+  const [activeCategory, setActiveCategory] = useState<Category>('Frontend');
   const [search, setSearch] = useState('');
 
   const filtered = useMemo(() => {
@@ -181,7 +188,7 @@ const TechStack: React.FC = () => {
             <aside
               className="flex-shrink-0 border-r py-5"
               style={{
-                width: '220px',
+                width: '240px',
                 borderColor: 'rgba(255,255,255,0.07)',
                 background: 'rgba(255,255,255,0.02)',
               }}
