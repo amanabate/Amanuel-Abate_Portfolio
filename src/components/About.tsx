@@ -67,7 +67,7 @@ const About = () => {
             About Me
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Passionate frontend developer with 3+ years of experience creating exceptional digital experiences
+            Passionate full-stack developer with 3+ years of experience creating exceptional digital experiences
           </p>
         </motion.div>
 

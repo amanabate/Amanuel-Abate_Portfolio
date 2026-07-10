@@ -37,7 +37,7 @@ const Footer = () => {
               transition={{ delay: 0.1 }}
               className="text-gray-400 leading-relaxed"
             >
-              Frontend Developer passionate about creating beautiful, 
+              Full-Stack Developer passionate about creating beautiful, 
               functional, and user-centered digital experiences.
             </motion.p>
           </div>

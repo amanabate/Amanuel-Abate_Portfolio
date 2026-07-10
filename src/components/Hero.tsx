@@ -4,7 +4,7 @@ import { ChevronDown, Download, Mail } from 'lucide-react';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
-  const titles = ['Frontend Developer', 'UI Engineer', 'React Specialist', 'Creative Coder'];
+  const titles = ['Full-Stack Developer', 'UI Engineer', 'React Specialist', 'Creative Coder'];
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
 
   useEffect(() => {
