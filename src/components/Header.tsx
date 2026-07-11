@@ -1,34 +1,33 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X, Sun, Moon, Github, Linkedin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    if (isDark) document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
   }, [isDark]);
 
+  // anchor links only work on home; other pages route separately
   const navItems = [
-    { name: 'Home',     href: '#home' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'About',    href: '#about' },
-    { name: 'Contact',  href: '#contact' },
+    { name: 'Home',     href: '/',        isRoute: true  },
+    { name: 'Projects', href: '#projects', isRoute: false },
+    { name: 'About',    href: '/about',   isRoute: true  },
+    { name: 'Contact',  href: '#contact',  isRoute: false },
   ];
 
   return (
@@ -67,14 +66,25 @@ const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                whileHover={{ y: -2 }}
-                className="text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
-              >
-                {item.name}
-              </motion.a>
+              item.isRoute ? (
+                <Link key={item.name} to={item.href}>
+                  <motion.span
+                    whileHover={{ y: -2 }}
+                    className="text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors cursor-pointer"
+                  >
+                    {item.name}
+                  </motion.span>
+                </Link>
+              ) : (
+                <motion.a
+                  key={item.name}
+                  href={isHome ? item.href : `/${item.href}`}
+                  whileHover={{ y: -2 }}
+                  className="text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
+                >
+                  {item.name}
+                </motion.a>
+              )
             ))}
             
             <div className="flex items-center space-x-4">
@@ -130,14 +140,25 @@ const Header = () => {
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-                  >
-                    {item.name}
-                  </a>
+                  item.isRoute ? (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400"
+                    >
+                      {item.name}
+                    </Link>
+                  ) : (
+                    <a
+                      key={item.name}
+                      href={isHome ? item.href : `/${item.href}`}
+                      onClick={() => setIsOpen(false)}
+                      className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-amber-500 dark:hover:text-amber-400"
+                    >
+                      {item.name}
+                    </a>
+                  )
                 ))}
                 <div className="flex items-center space-x-4 px-3 py-2">
                   <a href="https://github.com/amanabate" target="_blank" rel="noopener noreferrer">

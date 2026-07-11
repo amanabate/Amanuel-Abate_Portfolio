@@ -59,14 +59,22 @@ const Footer = () => {
               transition={{ delay: 0.1 }}
               className="space-y-2"
             >
-              {['Home', 'About', 'Projects', 'Contact'].map((link) => (
+              {[
+                { label: 'Home',       href: '#home' },
+                { label: 'Projects',   href: '#projects' },
+                { label: 'Services',   href: '#services' },
+                { label: 'Experience', href: '#experience' },
+                { label: 'Education',  href: '#education' },
+                { label: 'About',      href: '#about' },
+                { label: 'Contact',    href: '#contact' },
+              ].map((link) => (
                 <motion.a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
+                  key={link.label}
+                  href={link.href}
                   whileHover={{ x: 5 }}
                   className="block text-gray-400 hover:text-white transition-colors"
                 >
-                  {link}
+                  {link.label}
                 </motion.a>
               ))}
             </motion.div>
@@ -116,6 +124,20 @@ const Footer = () => {
             >
               Available for freelance work and exciting opportunities
             </motion.p>
+            <motion.a
+              href="https://t.me/AmanA1928"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 mt-4 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-shadow text-sm"
+            >
+              💼 Hire Me
+            </motion.a>
           </div>
         </div>
 
@@ -127,7 +149,7 @@ const Footer = () => {
           className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center"
         >
           <p className="text-gray-400 text-sm flex items-center gap-1">
-            © 2024 Amanuel Abate. Made with <Heart size={16} className="text-red-500" /> and lots of coffee.
+            © 2026 Amanuel Abate. Made with <Heart size={16} className="text-red-500" /> and lots of coffee.
           </p>
           
           <motion.button

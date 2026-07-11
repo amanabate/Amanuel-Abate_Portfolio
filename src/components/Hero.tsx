@@ -122,6 +122,7 @@ const Hero = () => {
                 Resume
               </motion.a>
             </div>
+
           </motion.div>
 
           {/* Right: Enlarged rotating avatar */}
@@ -134,7 +135,7 @@ const Hero = () => {
             <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96">
               <div className="absolute inset-0 rounded-full overflow-hidden ring-2 ring-amber-500/60 bg-gray-900">
                 <img
-                  src="https://avatars.githubusercontent.com/u/129896984?s=400&u=3f5f2b89be965494c9deca917d6c79533305a5f6&v=4"
+                  src="https://github.com/amanabate.png"
                   alt="Amanuel Abate Profile"
                   className="w-full h-full object-cover"
                 />
@@ -142,6 +143,37 @@ const Hero = () => {
             </div>
           </motion.div>
         </div>
+
+        {/* Stats row — full width, centered below the grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ type: 'spring', stiffness: 80, damping: 18, delay: 0.5 }}
+          className="flex items-center justify-center mt-12 divide-x divide-gray-300 dark:divide-gray-600"
+        >
+          {[
+            { icon: '🏆', value: '3+ Years',    label: 'Experience'          },
+            { icon: '🌍', value: 'Worldwide',   label: 'Global Availability' },
+            { icon: '🔓', value: 'Open Source', label: 'Ready to Contribute' },
+          ].map((stat, i) => (
+            <motion.div
+              key={stat.value}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: 'spring', stiffness: 100, damping: 18, delay: 0.6 + i * 0.12 }}
+              whileHover={{ y: -8, scale: 1.08 }}
+              whileTap={{ scale: 0.97 }}
+              className={`flex flex-col items-center gap-1.5 cursor-default group ${i === 0 ? 'pr-8' : i === 2 ? 'pl-8' : 'px-8'}`}
+            >
+              <p className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors duration-200 leading-none tracking-tight whitespace-nowrap">
+                <span className="mr-1.5">{stat.icon}</span>{stat.value}
+              </p>
+              <p className="text-sm text-neutral-500 dark:text-neutral-400 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors duration-200 whitespace-nowrap">
+                {stat.label}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
 
       <motion.div

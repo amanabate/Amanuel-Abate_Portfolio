@@ -2,10 +2,12 @@
 import React from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import About from '../components/About';
 import TechStack from '../components/TechStack';
 import Projects from '../components/Projects';
 import Services from '../components/Services';
+import Experience from '../components/Experience';
+import Education from '../components/Education';
+import BeyondCode from '../components/BeyondCode';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 
@@ -17,7 +19,9 @@ const Index = () => {
       <TechStack />
       <Projects />
       <Services />
-      <About />
+      <Experience />
+      <Education />
+      <BeyondCode />
       <Contact />
       <Footer />
     </div>
